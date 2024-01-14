@@ -44,7 +44,12 @@ public :
         }
         float moyX = sumX/n ;
         float moyY = sumY/n ;
-        slope =(sumXY -n*moyX*moyY)/(sumX2-n*moyX*moyX);
+        float d = (sumX2-n*moyX*moyX) ;
+        if(d!=0){
+            slope =(sumXY -n*moyX*moyY)/d;
+        }else{
+            slope = 0 ;
+        }
         intercept=moyY-slope*moyX ;
     }
     float predict_y(float x){
@@ -63,6 +68,8 @@ int main()
     //Eval(2*i+7);
     Point p1,p2,p3 ;
     p1.Init();
+    p2.Init();
+    p3.Init();
     p1.afficher();
     p1.deplacer(2,4);
     p1.afficher();
